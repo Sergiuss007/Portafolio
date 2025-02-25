@@ -1,17 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
     const chatContainer = document.getElementById("chat-container");
     const closeChatButton = document.getElementById("close-chat");
+    const openChatButton = document.getElementById("open-chat");
 
-    // Función para cerrar el chat al hacer clic en la "X"
+    // Cierra el chat cuando se hace clic en la "X"
     closeChatButton.addEventListener("click", function () {
-        chatContainer.style.display = "none"; // Oculta el chatbox
+        chatContainer.style.display = "none"; // Oculta el chat
+        openChatButton.style.display = "block"; // Muestra el botón para abrir el chat
     });
 
+    // Abre el chat cuando se hace clic en el botón de abrir
+    openChatButton.addEventListener("click", function () {
+        chatContainer.style.display = "block"; // Muestra el chat
+        openChatButton.style.display = "none"; // Oculta el botón de abrir
+    });
+
+    // Configuración del chatbot
     const chatbox = document.getElementById("chat-box");
     const inputField = document.getElementById("user-input");
     const sendButton = document.getElementById("send-button");
 
-    // Base de datos de respuestas predefinidas
     const respuestas = {
         "hola": "¡Hola! ¿En qué puedo ayudarte?",
         "quién eres": "Soy un chatbot básico sin backend. 😊",
