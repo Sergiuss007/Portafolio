@@ -1,61 +1,38 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const axios = require("axios");
+document.addEventListener("DOMContentLoaded", function () {
+    const chatbox = document.getElementById("chat-box");
+    const inputField = document.getElementById("user-input");
+    const sendButton = document.getElementById("send-button");
 
-const app = express();
-app.use(express.json());
-app.use(cors()); // Asegura que GitHub Pages pueda acceder
+    // Base de datos de respuestas predefinidas
+    const respuestas = {
+        "hola": "¡Hola! ¿En qué puedo ayudarte?",
+        "quién eres": "Soy un chatbot básico sin backend. 😊",
+        "adiós": "¡Hasta luego! Que tengas un gran día.",
+        "default": "Lo siento, no entiendo esa pregunta. 🤖"
+    };
 
-const BACKEND_URL = "https://portafolio-zot1.onrender.com"; // URL del backend en Render
-
-async function getChatGPTResponse(userInput) {
-    addMessage("Escribiendo...", "bot-message");
-
-    try {
-        const response = await fetch(`${BACKEND_URL}/chat`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ message: userInput })
-        });
-
-        const data = await response.json();
-        addMessage(data.reply, "bot-message");
-    } catch (error) {
-        addMessage("Error al conectar con el chatbot.", "bot-message");
-        console.error("Error:", error);
+    function addMessage(text, className) {
+        let messageDiv = document.createElement("div");
+        messageDiv.className = className;
+        messageDiv.textContent = text;
+        chatbox.appendChild(messageDiv);
+        chatbox.scrollTop = chatbox.scrollHeight;
     }
-}
 
-// Función para agregar mensajes al chat
-function addMessage(text, className) {
-    let chatBox = document.getElementById("chat-box");
-    let messageDiv = document.createElement("div");
-    messageDiv.className = className;
-    messageDiv.textContent = text;
-    chatBox.appendChild(messageDiv);
-    chatBox.scrollTop = chatBox.scrollHeight;
-}
+    function sendMessage() {
+        let userMessage = inputField.value.trim().toLowerCase();
+        if (userMessage === "") return;
 
-// Evento para enviar mensaje con "Enter"
-document.getElementById("user-input").addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-        sendMessage();
+        addMessage("Tú: " + userMessage, "user-message");
+
+        let botResponse = respuestas[userMessage] || respuestas["default"];
+        setTimeout(() => addMessage("Chatbot: " + botResponse, "bot-message"), 500);
+
+        inputField.value = "";
     }
-});
 
-// Evento para enviar mensaje con botón
-document.getElementById("send-button").addEventListener("click", function () {
-    sendMessage();
+    sendButton.addEventListener("click", sendMessage);
+    inputField.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") sendMessage();
+    });
 });
-
-// Función para enviar mensaje
-function sendMessage() {
-    let userInput = document.getElementById("user-input").value;
-    if (userInput.trim() === "") return;
-    addMessage(userInput, "user-message");
-    document.getElementById("user-input").value = "";
-    getChatGPTResponse(userInput);
-}
