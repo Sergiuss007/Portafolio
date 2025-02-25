@@ -1,5 +1,6 @@
-const BACKEND_URL = "https://portafolio-f8al.onrender.com";
+const BACKEND_URL = "https://portafolio-f8al.onrender.com"; // Backend en Render
 
+// Función para obtener respuesta del chatbot
 async function getChatGPTResponse(userInput) {
     addMessage("Escribiendo...", "bot-message");
 
@@ -15,7 +16,8 @@ async function getChatGPTResponse(userInput) {
         const data = await response.json();
         addMessage(data.reply, "bot-message");
     } catch (error) {
-        addMessage("Error al obtener respuesta del chatbot.", "bot-message");
+        addMessage("Error al conectar con el chatbot.", "bot-message");
+        console.error("Error:", error);
     }
 }
 
@@ -29,14 +31,29 @@ function addMessage(text, className) {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// Evento para enviar mensaje con "Enter"
-document.addEventListener("keypress", function(event) {
+// Mostrar/Ocultar el chat al hacer clic en el botón
+document.getElementById("chat-button").addEventListener("click", function() {
+    document.getElementById("chat-container").style.display = "block";
+});
+
+// Cerrar el chat al hacer clic en el botón de cerrar
+document.getElementById("close-chat").addEventListener("click", function() {
+    document.getElementById("chat-container").style.display = "none";
+});
+
+// Evento para enviar mensaje al presionar "Enter"
+document.getElementById("user-input").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         sendMessage();
     }
 });
 
-// Función para enviar mensaje desde el input
+// Función para enviar mensaje con el botón
+document.getElementById("send-button").addEventListener("click", function() {
+    sendMessage();
+});
+
+// Función para enviar mensaje
 function sendMessage() {
     let userInput = document.getElementById("user-input").value;
     if (userInput.trim() === "") return;
