@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Sergio Méndez</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Menú de Navegación -->
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#acerca">Acerca de Mí</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#experiencia">Experiencia</a></li>
+            <li><a href="#cv">CV</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sección: Inicio -->
+    <section id="inicio">
+        <div class="hero">
+            <img src="assets/img/datascience-wallpaper.jpeg" alt="Data Science Wallpaper">
+            <div class="hero-text">
+                <h1>Bienvenido al Portafolio de Sergio Méndez</h1>
+                <p>Transformando datos en estrategias efectivas para la toma de decisiones empresariales.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Servicios -->
+    <section id="servicios">
+        <h2>Servicios</h2>
+        <ul>
+            <li>Consultoría en análisis de datos</li>
+            <li>Desarrollo de modelos predictivos</li>
+            <li>Visualización de datos interactiva</li>
+        </ul>
+    </section>
+
+    <!-- Sección: Acerca de Mí-->
+    <section id="acerca">
+    <h2>Acerca de Mí</h2>
+    <p>Profesional con más de 9 años de experiencia en áreas tributarias y contables, certificado en Ciencia de Datos por la ESPOL. Competente en análisis de datos, modelado predictivo y visualización, con habilidades en Python, Power BI y SQL.</p>
+    </section>
+
+    <section id="proyectos">
+    <h2>Proyectos</h2>
+    <div class="proyecto">
+         <h3>Modelo de Pronóstico de Ventas</h3>
+         <p>Desarrollo de un modelo estadístico para predecir las ventas mensuales de una cadena de tiendas, utilizando técnicas de series temporales en Python.</p>
+    </div>
+    <div class="proyecto">
+    <h3>Dashboard Financiero Interactivo</h3>
+    <p>Creación de un panel de control en Power BI para visualizar indicadores clave de rendimiento financiero, facilitando la toma de decisiones estratégicas.</p>
+  </div>
+</section>
+
+    <section id="experiencia">
+  <h2>Experiencia</h2>
+  <div class="trabajo">
+    <h3>Gerente de Planificación Financiera y Presupuesto</h3>
+    <p>Consorcio XYZ | Marzo 2018 - Julio 2019</p>
+    <p>Responsable de la planificación financiera y control presupuestario a nivel corporativo, desarrollando modelos financieros y dashboards para la toma de decisiones.</p>
+  </div>
+  <div class="trabajo">
+    <h3>Coordinador de Presupuesto y Control</h3>
+    <p>Empresa ABC | Noviembre 2016 - Octubre 2017</p>
+    <p>Elaboración del presupuesto anual, seguimiento y análisis financiero, diseño de cuadros de mando integrales y proyecciones económicas.</p>
+  </div>
+</section>
+
+<section id="cv">
+    <h2>Descargar CV</h2>
+    <p>Puedes descargar mi currículum en formato PDF haciendo clic en el botón a continuación.</p>
+    <a href="assets/docs/AltaCV_Template.pdf" download="AltaCV_Template.pdf" class="btn-cv">📄 Descargar CV</a>
+</section>
+
+    <section id="contacto">
+  <h2>Contacto</h2>
+  <p>Si deseas más información o tienes alguna consulta, no dudes en contactarme:</p>
+      <ul>
+        <p>Email: <a href="mailto:leonardo_kuan@hotmail.com">leonardo_kuan@hotmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/sergio-m%C3%A9ndez-mera-8871b354" target="_blank">Mi LinkedIn</a></p>
+      </ul>    
+</section>
+
+<!-- Contenedor del WebChat -->
+<div id="chat-container">
+    <div id="chat-header">
+        <span>Bienvenido a mi Webchat!!!</span>
+        <button onclick="closeChat()">✖</button>
+    </div>
+    <div id="chat-box">
+        <div class="bot-message">Hola, ¿puedo ayudarle?</div>
+    </div>
+    <div id="chat-input-container">
+        <input type="text" id="user-input" placeholder="Escribe tu mensaje..." onkeypress="handleKeyPress(event)">
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+</div>
+
+<!-- Botón flotante para abrir el chat -->
+<button id="open-chat-btn" onclick="openChat()">💬 Chat</button>
+
+<!-- Enlace a script.js -->
+<script src="assets/js/script.js"></script>
+
+    <footer>
+        <p>&copy; 2024 Sergio Méndez - Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,41 @@
+title: "Mi Portafolio de Data Science"
+description: "Presentación profesional de [Tu Nombre] – Experto en Ciencia de Datos, Finanzas y Contabilidad."
+remote_theme: mmistakes/minimal-mistakes@4.24.0
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-archives
+  - jekyll-gist
+  - jekyll-github-metadata
+  - jekyll-algolia
+  - jemoji
+  - jekyll-include-cache
+  - jekyll-mentions
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+  - jekyll-default-layout
+  - jekyll-titles-from-headings
+  - jekyll-redirect-from
+  - jekyll-paginate-v2
+  - jekyll-compose
+  - jekyll-theme-primer
+  - jekyll-theme-dinky
+  - jekyll-theme-cayman
+  - jekyll-theme-slate
+  - jekyll-theme-tactile
+  - jekyll-theme-midnight
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "single"
+      author: "Sergiuss007"
+      read_time: true
+      share: true
+      comments: true
+custom_css: /assets/css/custom.css
