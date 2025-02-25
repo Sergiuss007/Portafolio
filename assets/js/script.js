@@ -1,4 +1,50 @@
-const BACKEND_URL = "https://portafolio-f8al.onrender.com"; // Backend en Render
+const BACKEND_URL = "https://portafolio-f8al.onrender.com";
+
+// Esperar hasta que el DOM esté completamente cargado
+document.addEventListener("DOMContentLoaded", function () {
+    const chatButton = document.getElementById("chat-button");
+    const chatContainer = document.getElementById("chat-container");
+    const closeChat = document.getElementById("close-chat");
+    const sendButton = document.getElementById("send-button");
+    const userInput = document.getElementById("user-input");
+
+    if (chatButton && chatContainer) {
+        // Evento para abrir el chat
+        chatButton.addEventListener("click", function () {
+            chatContainer.classList.toggle("active");
+        });
+    }
+
+    if (closeChat) {
+        // Evento para cerrar el chat
+        closeChat.addEventListener("click", function () {
+            chatContainer.classList.remove("active");
+        });
+    }
+
+    if (sendButton && userInput) {
+        // Evento para enviar mensaje con el botón
+        sendButton.addEventListener("click", sendMessage);
+
+        // Evento para enviar mensaje con "Enter"
+        userInput.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        });
+    }
+});
+
+// Función para enviar mensaje
+function sendMessage() {
+    const userInput = document.getElementById("user-input").value.trim();
+    if (userInput === "") return;
+
+    addMessage(userInput, "user-message");
+    document.getElementById("user-input").value = "";
+
+    getChatGPTResponse(userInput);
+}
 
 // Función para obtener respuesta del chatbot
 async function getChatGPTResponse(userInput) {
@@ -29,35 +75,4 @@ function addMessage(text, className) {
     messageDiv.textContent = text;
     chatBox.appendChild(messageDiv);
     chatBox.scrollTop = chatBox.scrollHeight;
-}
-
-// Mostrar/Ocultar el chat al hacer clic en el botón
-document.getElementById("chat-button").addEventListener("click", function() {
-    document.getElementById("chat-container").style.display = "block";
-});
-
-// Cerrar el chat al hacer clic en el botón de cerrar
-document.getElementById("close-chat").addEventListener("click", function() {
-    document.getElementById("chat-container").style.display = "none";
-});
-
-// Evento para enviar mensaje al presionar "Enter"
-document.getElementById("user-input").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        sendMessage();
-    }
-});
-
-// Función para enviar mensaje con el botón
-document.getElementById("send-button").addEventListener("click", function() {
-    sendMessage();
-});
-
-// Función para enviar mensaje
-function sendMessage() {
-    let userInput = document.getElementById("user-input").value;
-    if (userInput.trim() === "") return;
-    addMessage(userInput, "user-message");
-    document.getElementById("user-input").value = "";
-    getChatGPTResponse(userInput);
 }
