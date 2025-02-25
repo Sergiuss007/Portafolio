@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const chatContainer = document.getElementById("chat-container");
+    const closeChatButton = document.getElementById("close-chat");
+
+    // Función para cerrar el chat al hacer clic en la "X"
+    closeChatButton.addEventListener("click", function () {
+        chatContainer.style.display = "none"; // Oculta el chatbox
+    });
+
     const chatbox = document.getElementById("chat-box");
     const inputField = document.getElementById("user-input");
     const sendButton = document.getElementById("send-button");
