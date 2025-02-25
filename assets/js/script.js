@@ -1,52 +1,14 @@
-const BACKEND_URL = "https://portafolio-f8al.onrender.com";
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const axios = require("axios");
 
-// Esperar hasta que el DOM esté completamente cargado
-document.addEventListener("DOMContentLoaded", function () {
-    const chatButton = document.getElementById("chat-button");
-    const chatContainer = document.getElementById("chat-container");
-    const closeChat = document.getElementById("close-chat");
-    const sendButton = document.getElementById("send-button");
-    const userInput = document.getElementById("user-input");
+const app = express();
+app.use(express.json());
+app.use(cors()); // Asegura que GitHub Pages pueda acceder
 
-    if (chatButton && chatContainer) {
-        // Evento para abrir el chat
-        chatButton.addEventListener("click", function () {
-            chatContainer.classList.toggle("active");
-        });
-    }
+const BACKEND_URL = "https://portafolio-zot1.onrender.com"; // URL del backend en Render
 
-    if (closeChat) {
-        // Evento para cerrar el chat
-        closeChat.addEventListener("click", function () {
-            chatContainer.classList.remove("active");
-        });
-    }
-
-    if (sendButton && userInput) {
-        // Evento para enviar mensaje con el botón
-        sendButton.addEventListener("click", sendMessage);
-
-        // Evento para enviar mensaje con "Enter"
-        userInput.addEventListener("keypress", function (event) {
-            if (event.key === "Enter") {
-                sendMessage();
-            }
-        });
-    }
-});
-
-// Función para enviar mensaje
-function sendMessage() {
-    const userInput = document.getElementById("user-input").value.trim();
-    if (userInput === "") return;
-
-    addMessage(userInput, "user-message");
-    document.getElementById("user-input").value = "";
-
-    getChatGPTResponse(userInput);
-}
-
-// Función para obtener respuesta del chatbot
 async function getChatGPTResponse(userInput) {
     addMessage("Escribiendo...", "bot-message");
 
@@ -75,4 +37,25 @@ function addMessage(text, className) {
     messageDiv.textContent = text;
     chatBox.appendChild(messageDiv);
     chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+// Evento para enviar mensaje con "Enter"
+document.getElementById("user-input").addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+});
+
+// Evento para enviar mensaje con botón
+document.getElementById("send-button").addEventListener("click", function () {
+    sendMessage();
+});
+
+// Función para enviar mensaje
+function sendMessage() {
+    let userInput = document.getElementById("user-input").value;
+    if (userInput.trim() === "") return;
+    addMessage(userInput, "user-message");
+    document.getElementById("user-input").value = "";
+    getChatGPTResponse(userInput);
 }
