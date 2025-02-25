@@ -1,4 +1,4 @@
-const BACKEND_URL = "https://chatbot-backend.onrender.com";  // URL de tu backend en Render
+const BACKEND_URL = "https://portafolio-f8al.onrender.com";
 
 async function getChatGPTResponse(userInput) {
     addMessage("Escribiendo...", "bot-message");
