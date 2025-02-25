@@ -213,52 +213,7 @@ footer {
     margin-top: 50px;
 }
 
-/* Estilos para el botón del chat */
-#chat-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-/* Contenedor del Chat */
-#chat-container {
-    width: 300px;
-    height: 400px;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    display: none; /* Ocultar por defecto */
-    flex-direction: column;
-    overflow: hidden;
-}
-
-#chat-header {
-    background: #007bff;
-    color: white;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#close-chat {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-}
-
+/* Estilos para el botón de abrir el chat */
 #open-chat {
     position: fixed;
     bottom: 20px;
@@ -269,6 +224,40 @@ footer {
     padding: 10px 15px;
     border-radius: 50px;
     font-size: 16px;
+    cursor: pointer;
+}
+
+/* Estilos del contenedor del chat */
+#chat-container {
+    width: 300px;
+    height: 400px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: none; /* Se oculta hasta que se haga clic en el botón */
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Estilos del header del chat */
+#chat-header {
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Botón de cerrar el chat */
+#close-chat {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
     cursor: pointer;
 }
 

@@ -3,16 +3,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeChatButton = document.getElementById("close-chat");
     const openChatButton = document.getElementById("open-chat");
 
-    // Cierra el chat cuando se hace clic en la "X"
-    closeChatButton.addEventListener("click", function () {
-        chatContainer.style.display = "none"; // Oculta el chat
-        openChatButton.style.display = "block"; // Muestra el botón para abrir el chat
-    });
+    // Ocultar el chat al inicio
+    chatContainer.style.display = "none";
 
     // Abre el chat cuando se hace clic en el botón de abrir
     openChatButton.addEventListener("click", function () {
         chatContainer.style.display = "block"; // Muestra el chat
         openChatButton.style.display = "none"; // Oculta el botón de abrir
+    });
+
+    // Cierra el chat cuando se hace clic en la "X"
+    closeChatButton.addEventListener("click", function () {
+        chatContainer.style.display = "none"; // Oculta el chat
+        openChatButton.style.display = "block"; // Muestra el botón para abrir el chat
     });
 
     // Configuración del chatbot
